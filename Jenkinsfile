@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stages('Checkout') {
+        stage('Checkout') {
             steps {
                 git credentialsId: 'cred_github', url: 'https://github.com/selectstarfrom/demo'
             }
