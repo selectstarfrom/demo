@@ -1,6 +1,7 @@
 package com.example.springboot.demo.dtos;
 
 import java.time.Instant;
+import java.util.Objects;
 
 public class UserDto {
 
@@ -48,5 +49,33 @@ public class UserDto {
 
     public void setModifiedDate(Instant modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDto userDto = (UserDto) o;
+        return Objects.equals(id, userDto.id) &&
+                Objects.equals(username, userDto.username) &&
+                Objects.equals(email, userDto.email) &&
+                Objects.equals(createdDate, userDto.createdDate) &&
+                Objects.equals(modifiedDate, userDto.modifiedDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, email, createdDate, modifiedDate);
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
+                '}';
     }
 }
